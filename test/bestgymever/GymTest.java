@@ -29,11 +29,13 @@ public class GymTest {
         Member m2 = testGym.getMember("åke åkesson");
         Member m3 = testGym.getMember("finns ej");
 
-        assertEquals(m1, m2);
-        assertNotEquals(m2, m3);
+        //Assert that m1 is not m3
+        assertNotSame(m2, m3);
 
+        //Assert m3 doesnt exist
         assertNull(m3);
 
+        //Assert that m1 and m2 are the same object
         assertSame(m1, m2);
     }
 }
