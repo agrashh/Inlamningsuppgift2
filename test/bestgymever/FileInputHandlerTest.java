@@ -40,17 +40,10 @@ public class FileInputHandlerTest {
         while (expectedIterator.hasNext() && actualIterator.hasNext()) {
             expectedMember = expectedIterator.next();
             actualMember = actualIterator.next();
-            // Member overrides equals(), checks if fields name, personalIdentityNumber and dateLastJoined are equal
+            // Member overrides equals(), checks if fields 'name, personalIdentityNumber and dateLastJoined' are equal
             // instead of checking if they are the same object.
             assertEquals(expectedMember, actualMember);
         }
-
-        // Check if generateMembersFromFile with null as input in Gym throws NullPointerException
-        Gym nullInputGym = new Gym(null, null);
-        FileInputHandler fh = new FileInputHandler(nullInputGym);
-
-        assertThrows(NullPointerException.class,
-                fh::generateMembersFromFile);
     }
 
     @Test
@@ -58,8 +51,7 @@ public class FileInputHandlerTest {
         // Assert throws NullPointerException if input path of gym is null;
         Gym nullGym = new Gym(null, null);
         FileInputHandler inputHandler = new FileInputHandler(nullGym);
-        Throwable exception =
-                assertThrows(NullPointerException.class,
+        Throwable exception = assertThrows(NullPointerException.class,
                         inputHandler::generateMembersFromFile);
 
     }
